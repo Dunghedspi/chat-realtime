@@ -1,0 +1,54 @@
+.Call_Modal{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.9);
+}
+.user_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.User_Call_Box{
+    background-color: white;
+    border-radius: 15px;
+    width: 40%;
+    padding: 15px 17px;
+}
+.avatar_box {
+    width: 15%;
+}
+.call-user-info{
+    width: 100%;
+}
+.avatar_box img {
+    margin-top: 12px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.group_button{
+    padding: 20px 40px;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.group_button button{
+    margin-left: 5px;
+    padding: 10px 5px;
+    cursor: pointer;
+    border-radius: 9px;
+    width: 80px;
+    border: rgb(102, 101, 101) 1px solid;
+    box-shadow: slategray 1px 2px;
+}
+.group_button button:active {
+    transform: translateY(2px);
+    box-shadow: none;    
+}

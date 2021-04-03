@@ -1,0 +1,52 @@
+.message-list-container {
+  padding: 10px;
+  /* padding-bottom: 70px; */
+  margin-bottom: 80px;
+}
+.messages {
+  padding: 5% 0;
+  overflow: auto;
+  flex: auto;
+}
+
+.container-chat {
+  margin-top: 5px;
+  position: relative;
+  border-radius: 9px 9px 9px 0px;
+  background-color: silver;
+  width: 50px;
+  height: 30px;
+}
+
+.circle {
+  position: absolute;
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  background-color: black;
+  margin: 3px;
+  border-radius: 50%;
+  animation: wave 1.5s infinite ease-in-out;
+  top: 10px;
+}
+.circle:first-child {
+  left: 10px;
+}
+.circle:nth-child(2) {
+  left: 20px;
+  animation-delay: 0.1s;
+}
+.circle:last-child {
+  left: 30px;
+  animation-delay: 0.2s;
+}
+
+@keyframes wave {
+  0%,
+  50% {
+    top: 10px;
+  }
+  25% {
+    top: 0px;
+  }
+}

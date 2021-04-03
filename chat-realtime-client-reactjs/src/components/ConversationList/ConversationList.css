@@ -1,0 +1,108 @@
+.conversation-list {
+  display: flex;
+  flex-direction: column;
+}
+.Modal-Background {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 1;
+}
+.avatar-user {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.Center-Content {
+  background-color: #efefef;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  padding: 40px 20px;
+  width: 30%;
+}
+.input-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: #dddddd 1px solid;
+}
+.input-group label {
+  padding-right: 5px;
+  padding-bottom: 0;
+}
+.input-group input {
+  padding: 0;
+  font-size: 15px;
+  border: none;
+  padding-bottom: 2px;
+}
+form.info {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  justify-content: center;
+  flex-direction: column;
+}
+form.form-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form.form-avatar img {
+  cursor: pointer;
+}
+Windowchange-pass {
+  margin-top: 20px;
+  padding: 10px;
+}
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-top: 20px;
+  align-self: flex-end;
+  width: 180px;
+}
+.button-group button {
+  padding: 8px 8px;
+  width: 80px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+.change-pass {
+  margin-top: 10px;
+  padding: 10px 5px;
+  border-radius: 9px;
+}
