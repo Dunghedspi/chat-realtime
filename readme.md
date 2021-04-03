@@ -5,4 +5,4 @@ typescrpit language. For the client, built on the reactjs framework of
 javascript. The interface of the application is not responsive because this is
 just a project of learning more knowledge. You can clone this application to
 refer to a basic application written for those who are new to typescript,
-javascript, nestjs, reactjs, webrtc (video call), socketIo.
+javascript, nestjs, reactjs, webrtc (video call), socketIo, readis(apdater).

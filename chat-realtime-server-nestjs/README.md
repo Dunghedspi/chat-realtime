@@ -26,6 +26,11 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Config
+
+Rename the .env.example file to .env\
+Edit the configuration in the .env file according to your configuration
+
 ## Installation
 
 ```bash
