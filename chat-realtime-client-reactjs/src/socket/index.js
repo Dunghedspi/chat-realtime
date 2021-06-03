@@ -45,11 +45,9 @@ export const SocketService = (socket, dispatch, userId) => {
   });
   socket.on('offline', payload => {
     const { user_id } = payload;
-    console.log('online');
     dispatch(RoomAction.updateStatusUser({ user_id, online: false }));
   });
   socket.on('rooms', payload => {
-    console.log(payload);
     dispatch(RoomAction.getListRoom(payload));
   });
   socket.on('read-message', payload => {
@@ -82,7 +80,6 @@ export const SocketService = (socket, dispatch, userId) => {
       socket.emit('endtyping', payload);
     },
     sendReadMessage: payload => {
-      console.log(payload);
       socket.emit('read-message', payload);
     },
     rejectCall: payload => {

@@ -28,8 +28,6 @@ const fs = require('fs');
 @WebSocketGateway({ namespace: '/chat' })
 export class MessageGateway
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-  private users: any[] = [];
-
   constructor(
     private readonly messageService: MessageService,
     private readonly roomService: RoomsService,

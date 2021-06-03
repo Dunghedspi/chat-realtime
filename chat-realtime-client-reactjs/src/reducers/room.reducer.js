@@ -1,5 +1,5 @@
-import { RoomAction } from '../actions/room.action';
-import { RoomActionType } from '../constants/actions/room.action';
+import { RoomAction } from "../actions/room.action";
+import { RoomActionType } from "../constants/actions/room.action";
 const initState = {
   rooms: [],
   roomActive: {},
@@ -25,7 +25,7 @@ const RoomReducer = (state = initState, action) => {
       if (payload.room_id === roomActive.id && payload.user_id !== userId) {
         sendReadMessage(payload);
       }
-      const roomIndex = rooms.findIndex(item => item.id === payload.room_id);
+      const roomIndex = rooms.findIndex((item) => item.id === payload.room_id);
 
       if (roomIndex > -1) {
         rooms[roomIndex].messages.push(payload);
@@ -39,7 +39,7 @@ const RoomReducer = (state = initState, action) => {
     }
     case RoomActionType.SET_MESSAGE: {
       const { rooms, roomActive } = state;
-      const roomIndex = rooms.findIndex(item => item.id === roomActive.id);
+      const roomIndex = rooms.findIndex((item) => item.id === roomActive.id);
       if (roomIndex > -1) {
         rooms[roomIndex].messages = action.payload;
         roomActive.messages = action.payload;
@@ -76,7 +76,7 @@ const RoomReducer = (state = initState, action) => {
       const newListRoom = [];
       for (const room of rooms) {
         const { users } = room;
-        const index = users.findIndex(item => item.id === user_id);
+        const index = users.findIndex((item) => item.id === user_id);
         if (index > -1) {
           users[index].online = online;
         }
@@ -90,11 +90,13 @@ const RoomReducer = (state = initState, action) => {
     case RoomActionType.UPDATE_READ_MESSAGE: {
       const { rooms } = state;
       const { message_id, room_id, user } = action.payload;
-      const index = rooms.findIndex(item => item.id === room_id);
+      const index = rooms.findIndex((item) => item.id === room_id);
       if (index > -1) {
         const { messages } = rooms[index];
-        const i = messages.findIndex(item => item.id === message_id);
+        const i = messages.findIndex((item) => item.id === message_id);
         if (i > -1) {
+          console.log(messages[i]);
+          messages[i].users = [];
           messages[i].users.push(user);
         }
       }

@@ -12,9 +12,6 @@ ENV PATH /var/www/nest-chat-realtime/node_modules/.bin:$PATH
 # Copy existing application directory contents
 COPY . /var/www/nest-chat-realtime
 # install and cache app dependencies
-COPY package.json /var/www/nest-chat-realtime/package.json
-COPY package-lock.json /var/www/nest-chat-realtime/package-lock.json
-
 # grant a permission to the application
 #RUN chown -R chat:chat /var/www/nest-chat-realtime
 
@@ -22,6 +19,7 @@ COPY package-lock.json /var/www/nest-chat-realtime/package-lock.json
 
 # clear application caching
 # install all dependencies
+RUN npm install -g npm@7.15.1
 RUN npm install
 
 EXPOSE 3004

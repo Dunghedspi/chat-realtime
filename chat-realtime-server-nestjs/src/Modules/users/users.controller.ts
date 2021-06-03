@@ -60,14 +60,9 @@ export class UsersController {
     @Req() req: Request,
     @Res() res: Response,
   ) {
+    console.log(req.user);
     return res.status(200).json(req.user);
   }
-
-  // @UseGuards(JwtGuards)
-  // @Get('n')
-  // public getUserInfo(@Res() res: Response) {
-  //   return res.status(200).json({ name: 'dung' });
-  // }
 
   @Get('avatar/:filename')
   getFile(@Param('filename') fileName: string, @Res() res: Response) {

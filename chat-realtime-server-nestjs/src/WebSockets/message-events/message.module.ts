@@ -7,14 +7,19 @@ import { UserRoomModule } from '../../Modules/user-room/user-room.module';
 import { AuthModule } from '../../auth/auth.module';
 
 @Module({
-  imports: [AuthModule,MessageModuleResource, RoomsModule, UserRoomModule, CacheModule.register({
-    store: redisStore,
-    host: 'localhost',
-    port: 6379,
-    ttl: 10000,
-  })],
+  imports: [
+    AuthModule,
+    MessageModuleResource,
+    RoomsModule,
+    UserRoomModule,
+    CacheModule.register({
+      store: redisStore,
+      host: 'redis',
+      // port: 6379,
+      ttl: 10000,
+    }),
+  ],
   controllers: [],
   providers: [MessageGateway],
 })
-export class MessageModule {
-}
+export class MessageModule {}
