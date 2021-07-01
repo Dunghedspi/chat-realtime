@@ -24,7 +24,7 @@ FILE_FONT_CONFIG_EXAMPLE="$PWD/fontend/.env.example"
 
 if [ ! -f $FILE_FONT_CONFIG ]
   then
-    echo `cp $FILE__FONT_CONFIG_EXAMPLE $FILE_FONT_CONFIG`
+    echo `cp $FILE_FONT_CONFIG_EXAMPLE $FILE_FONT_CONFIG`
     echo -ne ".env.exampleファイルから .env ファイルがコピーされました。\n"
 else
   echo -ne ".env ファイルが既に存在します\n"
