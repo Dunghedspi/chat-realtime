@@ -12,7 +12,7 @@ FILE_CONFIG_EXAMPLE="$PWD/.env.example"
 
 if [ ! -f $FILE_CONFIG ]
   then
-    echo `copy $FILE_CONFIG_EXAMPLE $FILE_CONFIG`
+    echo `cp $FILE_CONFIG_EXAMPLE $FILE_CONFIG`
     echo -ne ".env.exampleファイルから .env ファイルがコピーされました。\n"
 else
   echo -ne ".env ファイルが既に存在します\n"
