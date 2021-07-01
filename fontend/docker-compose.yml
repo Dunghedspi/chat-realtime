@@ -1,0 +1,16 @@
+version: '3.9'
+services: 
+  web:
+    container_name: chat-realtime-client
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - ${PORT}:${PORT}
+    networks: 
+      - chat-realtime-client
+    volumes: 
+      - ./build:/var/www/nest-chat-realtime/build
+networks: 
+  chat-realtime-client:
+    driver: bridge
