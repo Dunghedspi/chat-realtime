@@ -43,5 +43,5 @@ else
 fi
 
 #link build folder reactjs
-FONTEND_BUILD_PATH="$PWD/fontend/build"
-`ln -s -f $FONTEND_BUILD_PATH $PWD/build`
+# FONTEND_BUILD_PATH="$PWD/fontend/build"
+# `ln -s -f $FONTEND_BUILD_PATH $PWD/build`
