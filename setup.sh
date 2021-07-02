@@ -2,8 +2,8 @@
 
 #install dependencies
 # echo -ne "run npm install server--------\n"
-# echo `npm install`
-
+echo `npm install`
+echo `cd $PWD/fontend && npm install && npm run build`
 
 
 #copy server .env

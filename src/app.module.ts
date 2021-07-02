@@ -25,9 +25,9 @@ import { join } from 'path';
     }),
     CacheModule.register({
       store: redisStore,
-      url: process.env.REDIS_URL,
-      // host: process.env.REDIS_URL,
-      // port: parseInt(process.env.REDIS_PORT),
+      // url: process.env.REDIS_URL,
+      host: process.env.REDIS_URL,
+      port: parseInt(process.env.REDIS_PORT),
       ttl: 10000,
     }),
     ConfigModule.forRoot({
