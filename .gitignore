@@ -36,5 +36,5 @@ lerna-debug.log*
 .env
 
 #uploads
-/uploads/avatar/*
-/uploads/image/*
+# /uploads/avatar/*
+# /uploads/image/*
