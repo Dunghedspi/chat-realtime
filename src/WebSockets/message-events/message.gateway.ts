@@ -55,6 +55,7 @@ export class MessageGateway
   public async sendMess(client: Socket, payload) {
     let newMessage = await this.messageService.create(payload);
     if (newMessage) {
+      console.log(newMessage);
       newMessage.dataValues.users = [];
       this.server.to('room:' + payload.room_id).emit('recvMess', newMessage);
     }
@@ -97,6 +98,7 @@ export class MessageGateway
 
       payloadResponse.push(room);
     }
+    console.log(rooms);
     client.emit('rooms', rooms);
   }
 
