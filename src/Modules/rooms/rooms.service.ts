@@ -3,7 +3,7 @@ import { CreateRoomDto } from './dto/create-room.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Room } from './entities/room.entity';
 // import { UpdateRoomDto } from './dto/update-room.dto';
-import * as Bcrypt from 'bcrypt';
+import * as Bcrypt from 'bcryptjs';
 import { UserRoomService } from '../user-room/user-room.service';
 import { User } from '../users/entities/user.entity';
 
