@@ -35,9 +35,9 @@ export default function Message(props) {
     isSend,
   } = props;
   const friendlyTimestamp = moment(data.timestamp).format('LLLL');
-  const user = useSelector(state => state.UserReducer);
+  const user = useSelector((state) => state.UserReducer);
 
-  const showModal = src => {
+  const showModal = (src) => {
     const modal = document.getElementById('myModal');
     const img = document.getElementById('myImg');
     const modalImg = document.getElementById('img01');
@@ -58,7 +58,7 @@ export default function Message(props) {
   {
     /*  */
   }
-  const showReadMessageUser = users => {
+  const showReadMessageUser = (users) => {
     if (isSend && isMine) {
       return <i className="ion-ios-checkmark-circle-outline"></i>;
     } else {
@@ -67,7 +67,10 @@ export default function Message(props) {
           {users.map((item, index) => {
             return (
               <li key={index}>
-                <img className="avatar_user_read" src={item.avatar} />
+                <img
+                  className="avatar_user_read"
+                  src={process.env.REACT_APP_SERVER_DOMAIN + item.avatar}
+                />
               </li>
             );
           })}
@@ -89,8 +92,15 @@ export default function Message(props) {
           <div className="timestamp"> {friendlyTimestamp} </div>
         )}
         <div className="bubble-container">
-          {!isMine ? <img src={mine?.avatar} className="avatarmine" /> : ''}
-          {showMessage(type, data.message, friendlyTimestamp, src =>
+          {!isMine ? (
+            <img
+              src={process.env.REACT_APP_SERVER_DOMAIN + mine?.avatar}
+              className="avatarmine"
+            />
+          ) : (
+            ''
+          )}
+          {showMessage(type, data.message, friendlyTimestamp, (src) =>
             showModal(src),
           )}
         </div>

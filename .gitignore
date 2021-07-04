@@ -1,7 +1,7 @@
 # compiled output
 /dist
 /node_modules
-/build
+#/build
 
 # Logs
 logs
@@ -36,5 +36,5 @@ lerna-debug.log*
 .env
 
 #uploads
-/uploads/avatar/*
-/uploads/image/*
+# /uploads/avatar/*
+# /uploads/image/*

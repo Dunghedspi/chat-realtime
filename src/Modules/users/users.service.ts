@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
 import { InjectModel } from '@nestjs/sequelize';
-import * as Bcrypt from 'bcrypt';
+import * as Bcrypt from 'bcryptjs';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { MailerServiceService } from '../mailer-service/mailer-service.service';
 import { Op } from 'sequelize';

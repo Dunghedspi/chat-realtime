@@ -20,6 +20,8 @@ export default function App() {
     return (userId) => {
       const socketIo = io(process.env.REACT_APP_SERVER_DOMAIN_SOCKET);
       const socketFunction = SocketService(socketIo, dispatch, userId);
+      socketFunction.afterConnect({ user_id: user.id });
+      socketFunction.joinListRoom({ offset: 0 });
       setSocket(socketFunction);
     };
   })(dispatch);
@@ -47,19 +49,20 @@ export default function App() {
   const [socket, setSocket] = React.useState("");
   const callState = useSelector((state) => state.CallReducer);
   const { isCall, userCall, room_id } = callState;
-  React.useEffect(() => {
-    if (socket) {
-      socket.afterConnect({ user_id: user.id });
-    }
-  }, [socket]);
+  // React.useEffect(() => {
+  //   if (socket) {
+  //     socket.afterConnect({ user_id: user.id });
+  //   }
+  // }, [socket]);
 
   const { rooms } = useSelector((state) => state.RoomReducer);
 
-  React.useEffect(() => {
-    if (socket) {
-      socket.joinListRoom({ offset: 0 });
-    }
-  }, [socket]);
+  // React.useEffect(() => {
+  //   if (socket) {
+  //     console.log(1);
+  //     socket.joinListRoom({ offset: 0 });
+  //   }
+  // }, [socket]);
 
   const handleClickYes = (room_id) => {
     const newWindown = window.open(

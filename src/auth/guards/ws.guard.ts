@@ -27,7 +27,7 @@ export class WsGuard implements CanActivate {
   }
 
   private getCookie(cookie, name) {
-    const parts = cookie?.split(`; ${name}=`);
+    const parts = cookie?.split(`${name}=`);
     if (parts?.length === 2) return parts.pop().split(';').shift();
   }
 }
