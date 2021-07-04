@@ -2,11 +2,11 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { RedisIoAdapter } from './adapters/redis.adapter';
 import * as cookieParser from 'cookie-parser';
-import fs from "fs"
+import * as fs from "fs";
 async function bootstrap() {
   const httpsOptions = {
-    key: fs.readFileSync('./secrets/private-key.pem'),
-    cert: fs.readFileSync('./secrets/public-certificate.pem'),
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem'),
   };
   const app = await NestFactory.create(AppModule, {httpsOptions});
   app.useWebSocketAdapter(new RedisIoAdapter(app));
