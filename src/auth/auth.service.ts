@@ -3,10 +3,11 @@ import { UserDto } from './dto/user.dto';
 import { UsersService } from '../Modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as Bcrypt from 'bcryptjs';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly userService: UsersService, private readonly jwtService: JwtService) {
+  constructor(private readonly userService: UsersService, private readonly jwtService: JwtService, private readonly configService:ConfigService) {
   }
 
   async login(userDto: UserDto): Promise<[object, string, boolean]> {
@@ -23,7 +24,7 @@ export class AuthService {
   }
 
   async validate(jwtToken): Promise<unknown> {
-      const payload = await this.jwtService.verify(jwtToken, {secret: "yenbong2912"});
+      const payload = await this.jwtService.verify(jwtToken, {secret: this.configService.get('jwt')?.privateKey});
       if(payload){
         return this.userService.findOne({id: payload.id});
       }

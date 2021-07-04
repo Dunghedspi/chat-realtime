@@ -27,14 +27,17 @@ export const Room = () => {
   const localVideo = useRef();
   const remoteVideo = useRef();
   const mainRef = useRef();
+  const [disable, setDisable] = React.useState(false);
   useEffect(() => {
     peerVideoConnection = createPeerConnectionContext();
   }, []);
 
   useEffect(() => {
     const createMediaStream = async () => {
+      let stream;
       if (!userMediaStream) {
-        const stream = await navigator.mediaDevices.getUserMedia({
+        try {
+        stream = await navigator.mediaDevices.getUserMedia({
           video: {
             width: { min: 640, ideal: 1920 },
             height: { min: 400, ideal: 1080 },
@@ -42,6 +45,9 @@ export const Room = () => {
           },
           audio: true,
         });
+        }catch(error){
+          setDisable(true);
+        }
 
         if (localVideo) {
           localVideo.current.srcObject = stream;
@@ -216,6 +222,15 @@ export const Room = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+      {disable? (
+        <div className="Call_Modal">
+          <div className="User_Call_Box">
+            <h1>Thiết bị không hỗ trợ</h1>
           </div>
         </div>
       ) : (

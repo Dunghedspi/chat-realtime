@@ -10,13 +10,13 @@ import { Room } from '../../rooms/entities/room.entity';
 import { UserRoom } from '../../user-room/entities/user-room.entity';
 import { Message } from '../../message/entities/message.entity';
 import { UserMessage } from 'src/Modules/message/entities/user-message.entity';
-
+import { ConfigService } from '@nestjs/config';
 @Table({
   paranoid: true,
   tableName: 'users',
   modelName: 'users',
 })
-export class User extends Model {
+export class User extends Model {  
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -43,7 +43,7 @@ export class User extends Model {
       this.getDataValue('avatar') == null
         ? 'avatardefault.jpg'
         : this.getDataValue('avatar');
-    return `${process.env.SERVER_DOMAIN}/users/avatar/` + filename;
+    return `/users/avatar/` + filename;
   }
 
   set avatar(value: string) {

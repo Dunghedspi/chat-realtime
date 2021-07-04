@@ -6,7 +6,7 @@ import { RoomAction } from '../../actions/room.action';
 import './ConversationListItem.css';
 
 const findUser = (users, user_id) => {
-  const index = users.findIndex(user => user.id !== user_id);
+  const index = users.findIndex((user) => user.id !== user_id);
   return users[index];
 };
 
@@ -17,14 +17,14 @@ export default function ConversationListItem(props) {
   const dispatch = useDispatch();
   const { users, name, messages, id } = props.room;
   const usersReadList = messages?.users;
-  const user = useSelector(state => state.UserReducer);
-  const { roomActive } = useSelector(state => state.RoomReducer);
+  const user = useSelector((state) => state.UserReducer);
+  const { roomActive } = useSelector((state) => state.RoomReducer);
 
-  const handleClick = id => {
+  const handleClick = (id) => {
     dispatch(RoomAction.changeRoomActive(props.room));
   };
 
-  const showMessage = messages => {
+  const showMessage = (messages) => {
     const message = messages.length > 0 ? messages[messages.length - 1] : '';
     let text = '';
     if (message?.type === 'image') {
@@ -73,7 +73,7 @@ export default function ConversationListItem(props) {
         className={`conversation-photo ${
           userShow?.online ? 'border-online' : ''
         }`}
-        src={userShow.avatar}
+        src={process.env.REACT_APP_SERVER_DOMAIN + userShow.avatar}
         alt="conversation"
       />
       {userShow?.online ? (

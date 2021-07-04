@@ -5,6 +5,8 @@ import { RoomsModule } from '../../Modules/rooms/rooms.module';
 import * as redisStore from 'cache-manager-redis-store';
 import { UserRoomModule } from '../../Modules/user-room/user-room.module';
 import { AuthModule } from '../../auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+import { CacheConfigService } from 'src/configs/cache.config';
 
 @Module({
   imports: [
@@ -12,12 +14,9 @@ import { AuthModule } from '../../auth/auth.module';
     MessageModuleResource,
     RoomsModule,
     UserRoomModule,
-    CacheModule.register({
-      store: redisStore,
-      // url: process.env.REDIS_URL,
-      host: process.env.REDIS_URL,
-      port: parseInt(process.env.REDIS_PORT),
-      ttl: 10000,
+    CacheModule.registerAsync({
+      imports: [ConfigModule],
+      useClass: CacheConfigService,
     }),
   ],
   controllers: [],

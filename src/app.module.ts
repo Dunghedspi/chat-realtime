@@ -1,6 +1,6 @@
 import { CacheModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { config } from './configs/config';
+import { configType } from '../configs';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { DatabaseConfig } from './configs/database.config';
 import { UsersModule } from './Modules/users/users.module';
@@ -15,24 +15,21 @@ import { MailerServiceModule } from './Modules/mailer-service/mailer-service.mod
 import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
 import { FileModule } from './Modules/file/file.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import * as redisStore from 'cache-manager-redis-store';
 import { join } from 'path';
+import { CacheConfigService } from './configs/cache.config';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'build'),
     }),
-    CacheModule.register({
-      store: redisStore,
-      // url: process.env.REDIS_URL,
-      host: process.env.REDIS_URL,
-      port: parseInt(process.env.REDIS_PORT),
-      ttl: 10000,
+    CacheModule.registerAsync({
+      imports: [ConfigModule],
+      useClass: CacheConfigService,
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [config],
+      load: [configType(process.env.NODE_ENV)],
     }),
     MailerModule.forRootAsync({
       useFactory: () => ({
