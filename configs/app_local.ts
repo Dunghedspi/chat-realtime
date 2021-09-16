@@ -17,7 +17,7 @@ export const config = () => {
       // url: url dat
     },
     redis: {
-      host: 'localhost',
+      url:"localhost",
       port: 6379,
       ttl: 10000,
     },

@@ -29,7 +29,7 @@ import { CacheConfigService } from './configs/cache.config';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [configType(process.env.NODE_ENV)],
+      load: [configType(process.env?.NODE_ENV)],
     }),
     MailerModule.forRootAsync({
       useFactory: () => ({

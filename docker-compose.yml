@@ -2,42 +2,42 @@ version: '3.7'
 # all the containers have to declare inside services
 services:
   # App service
-  # nestchat:
-  #   # application rely on redis running
-  #   depends_on:
-  #     - redis
-  #     - mysql
-  #   # this build context will take the commands from Dockerfile
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   # container name
-  #   container_name: nestchat
-  #   # always restart the container if it stops.
-  #   links:
-  #     - redis
-  #     - mysql
-  #   # docker run -t is allow
-  #   tty: true
-  #   # application port, this is take value from env file
-  #   ports:
-  #     - ${PORT}:${PORT}
-  #   # working directory
-  #   working_dir: /var/www/nest-chat-realtime
-  #   # application environment
-  #   environment:
-  #     SERVICE_NAME: nestchat
-  #     SERVICE_TAGS: dev
-  #     REDIS_PORT: ${REDIS_PORT}
-  #     REDIS_URL: ${REDIS_URL}
-  #   # save (persist) data and also to share data between containers
-  #   volumes:
-  #     - ./:/var/www/nest-chat-realtime
-  #     - /var/www/nest-chat-realtime/node_modules
-  #     # application network, each container for a service joins this network
-  #   networks:
-  #     - nest-chat-network
-  # # Redis service
+  nestchat:
+    # application rely on redis running
+    depends_on:
+      - redis
+      - mysql
+    # this build context will take the commands from Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # container name
+    container_name: nestchat
+    # always restart the container if it stops.
+    links:
+      - redis
+      - mysql
+    # docker run -t is allow
+    tty: true
+    # application port, this is take value from env file
+    ports:
+      - ${PORT}:${PORT}
+    # working directory
+    working_dir: /var/www/nest-chat-realtime
+    # application environment
+    environment:
+      SERVICE_NAME: nestchat
+      SERVICE_TAGS: dev
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_URL: ${REDIS_URL}
+    # save (persist) data and also to share data between containers
+    volumes:
+      - ./:/var/www/nest-chat-realtime
+      - /var/www/nest-chat-realtime/node_modules
+      # application network, each container for a service joins this network
+    networks:
+      - nest-chat-network
+  # Redis service
   redis:
     # image name
     image: redis:latest
@@ -75,18 +75,18 @@ services:
     hostname: mysql
 
     # database manager
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    depends_on:
-      - mysql
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=mysql
-      - PMA_USER=root
-    ports:
-      - 8080:80
-    networks:
-      - nest-chat-network
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   depends_on:
+  #     - mysql
+  #   environment:
+  #     - PMA_ARBITRARY=1
+  #     - PMA_HOST=mysql
+  #     - PMA_USER=root
+  #   ports:
+  #     - 8080:80
+  #   networks:
+  #     - nest-chat-network
   #Docker Networks
 networks:
   # All container connect in a network
